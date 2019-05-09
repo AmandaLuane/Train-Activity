@@ -1,0 +1,31 @@
+#title {
+    background-image: url(..//image/20160124_GFJ2741-kerry-park-skyline_seattle-wa-panoramic.jpg) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Alfa Slab One', cursive;
+    text-align: center;
+    color: white;;
+}
+
+.card-header {
+    background-color: blue;
+    color: black;
+    font-weight: bold;
+}
+#header {
+    background-color: rgb(23, 92, 172);
+}
+
+.form-group {
+    font-weight: bold;
+}
+
+th {
+    font-weight: bold;
+}
+
+.container {
+background-color: black;
+padding: 10px;
+}
+

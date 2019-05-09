@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Amanda's Station</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <!-- <script src="assets/javascript/app.js"></script> -->
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+<!-- Jumbotran -->
+        <div class="jumbotron jumbotron-fluid" id="title">
+                <div class="container" id="titleBG">
+                  <h1 class="display-4">Amanda's HappyTime Schedule</h1>
+                  <p class="lead"></p>
+                </div>
+              </div>
+
+              <br>
+
+
+<!-- table -->
+    <div class="container">
+            <div class=row></div>
+            <div class="card">
+                <div class="card-header" id="header">
+                    Current Train Schedule
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Minutes Away</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr>
+                                <td>Sumner Train</td>
+                                <td>Seattle</td>
+                                <td>60</td>
+                                <td>5:15 AM</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+
+<!-- Entry Form -->
+            <div class="card">
+                    <div class="card-header" id="header">
+                        Add Train
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Train Name</label>
+                                <input type="text" class="form-control" id="trainName" aria-describedby="employeeName"
+                                    placeholder="Enter Train">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Destination</label>
+                                <input type="text" class="form-control" id="destination" placeholder="Enter Destination">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">First Train Time (HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="trainTime" placeholder="Time Time">
+                            </div>
+                            <div class="form-group">
+                                <label for="rate">Frequency (min)</label>
+                                <input type="text" class="form-control" id="trianFrequency"
+                                    placeholder="Trian Frequency">
+                            </div>
+        
+                            <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+        
+                </div>
+
+
+
+
+   
+
+    <script src="assets/javascript/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    
+
+
+
+</body>
+
+</html>
