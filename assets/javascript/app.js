@@ -7,7 +7,7 @@ console.log("train js page")
 
 
   // Your web app's Firebase configuration
-  var firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyARJgIVGScw27BnBojnlt9IPS_zU6K2yiQ",
     authDomain: "classact-e4d5f.firebaseapp.com",
     databaseURL: "https://classact-e4d5f.firebaseio.com",
@@ -42,7 +42,7 @@ console.log("train js page")
 
 
 
-        database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function (childSnapshot) {
+        database.ref().on("child_added", function(childSnapshot) {
 
             var sv = childSnapshot.val();
             console.log(sv.trainName);
@@ -53,40 +53,35 @@ console.log("train js page")
             var trainTimeDB = sv.trainTime;
             var trainFreqDB = sv.trainFreq;
 
-            $(document).ready(function(){
-                $('input.timepicker').timepicker({ timeFormat: 'hh:mm:ss p' });
-            });
+            var startTimeConvert = moment(childSnapshot.val().trainTime, "hh:mm").subtract(1, "years");
+            console.log("start time converted " + startTimeConvert);
+            var difference  = moment().diff(moment(startTimeConvert), "minutes");
+            console.log("different " + difference);
+            var remaining = difference % childSnapshot.val().trainFreq;
+            console.log("remaining " + remaining);
+            var remainingMins = childSnapshot.val().trainFreq - remaining;
+            console.log("remaining Mins " + remainingMins);
+            var nextTrainDB = moment().add(remainingMins);
+            console.log("nextTrain " + nextTrainDB);
+            var key = childSnapshot.key;
 
-
-
-            
-
-            // // //Making the employee start date look correct
-            // var datePretty = moment(dateA).format("MM/DD/YYYY");
-
-            // // //Calculate the months worked
-            // var now = moment().format("MM/DD/YYYY");
-            // var nowUTC = moment.utc(moment(now, "MM/DD/YYYY"));
-            // var dateUTC = moment.utc(moment(dateA, "MM/DD/YYYY"));
-
-            // // var empMonths = parseInt(now.from(moment(dateA), "months"));
-            // var empMonths = nowUTC.diff(dateUTC, "months");
-            // var empMonthPretty = empMonths;
-            // console.log(now);
-            // console.log(empMonths);
-            // console.log(empMonthPretty);
-
-
-
-
-
-
-            // //calculate the total billed rate
-            // var empBilled = empMonths * rateA;
-            // console.log(empBilled)
 
             var dataSet = ("<tr><td>" + trainNameDB + "</td><td>" + destinationDB + "</td><td>" +
-            trainTimeDB + "</td><td>" + trainFreqDB + "</td></tr>");
-
+            trainFreqDB + "</td><td>" + trainTimeDB + "</td><td>" + remainingMins + "</td></tr>");
+    
             $("#tbody").append(dataSet);
+
         });
+
+        $(document).on("click", ".arrival", function() {
+            keyref = $(this).attr("data-key");
+            database.ref().child(keyref).remove();
+            window.location.reload();
+          });
+          
+          setInterval(function() {
+            window.location.reload();
+          }, 60000);
+
+
+
